@@ -23,58 +23,58 @@ become to
 📦example
  ┣ 📂android
  ┃ ┣ 📂drawable-hdpi
- ┃ ┃ ┣ 📜cat1.jpg
- ┃ ┃ ┣ 📜cat2.jpg
- ┃ ┃ ┗ 📜cat3.jpg
+ ┃ ┃ ┣ 📜cat1.png
+ ┃ ┃ ┣ 📜cat2.png
+ ┃ ┃ ┗ 📜cat3.png
  ┃ ┣ 📂drawable-mdpi
- ┃ ┃ ┣ 📜cat1.jpg
- ┃ ┃ ┣ 📜cat2.jpg
- ┃ ┃ ┗ 📜cat3.jpg
+ ┃ ┃ ┣ 📜cat1.png
+ ┃ ┃ ┣ 📜cat2.png
+ ┃ ┃ ┗ 📜cat3.png
  ┃ ┣ 📂drawable-xhdpi
- ┃ ┃ ┣ 📜cat1.jpg
- ┃ ┃ ┣ 📜cat2.jpg
- ┃ ┃ ┗ 📜cat3.jpg
+ ┃ ┃ ┣ 📜cat1.png
+ ┃ ┃ ┣ 📜cat2.png
+ ┃ ┃ ┗ 📜cat3.png
  ┃ ┣ 📂drawable-xxhdpi
- ┃ ┃ ┣ 📜cat1.jpg
- ┃ ┃ ┣ 📜cat2.jpg
- ┃ ┃ ┗ 📜cat3.jpg
+ ┃ ┃ ┣ 📜cat1.png
+ ┃ ┃ ┣ 📜cat2.png
+ ┃ ┃ ┗ 📜cat3.png
  ┃ ┗ 📂drawable-xxxhdpi
- ┃ ┃ ┣ 📜cat1.jpg
- ┃ ┃ ┣ 📜cat2.jpg
- ┃ ┃ ┗ 📜cat3.jpg
+ ┃ ┃ ┣ 📜cat1.png
+ ┃ ┃ ┣ 📜cat2.png
+ ┃ ┃ ┗ 📜cat3.png
  ┣ 📂flutter
  ┃ ┣ 📂1.5x
- ┃ ┃ ┣ 📜cat1.jpg
- ┃ ┃ ┣ 📜cat2.jpg
- ┃ ┃ ┗ 📜cat3.jpg
+ ┃ ┃ ┣ 📜cat1.png
+ ┃ ┃ ┣ 📜cat2.png
+ ┃ ┃ ┗ 📜cat3.png
  ┃ ┣ 📂2.0x
- ┃ ┃ ┣ 📜cat1.jpg
- ┃ ┃ ┣ 📜cat2.jpg
- ┃ ┃ ┗ 📜cat3.jpg
+ ┃ ┃ ┣ 📜cat1.png
+ ┃ ┃ ┣ 📜cat2.png
+ ┃ ┃ ┗ 📜cat3.png
  ┃ ┣ 📂3.0x
- ┃ ┃ ┣ 📜cat1.jpg
- ┃ ┃ ┣ 📜cat2.jpg
- ┃ ┃ ┗ 📜cat3.jpg
+ ┃ ┃ ┣ 📜cat1.png
+ ┃ ┃ ┣ 📜cat2.png
+ ┃ ┃ ┗ 📜cat3.png
  ┃ ┣ 📂4.0x
- ┃ ┃ ┣ 📜cat1.jpg
- ┃ ┃ ┣ 📜cat2.jpg
- ┃ ┃ ┗ 📜cat3.jpg
- ┃ ┣ 📜cat1.jpg
- ┃ ┣ 📜cat2.jpg
- ┃ ┗ 📜cat3.jpg
+ ┃ ┃ ┣ 📜cat1.png
+ ┃ ┃ ┣ 📜cat2.png
+ ┃ ┃ ┗ 📜cat3.png
+ ┃ ┣ 📜cat1.png
+ ┃ ┣ 📜cat2.png
+ ┃ ┗ 📜cat3.png
  ┣ 📂ios
  ┃ ┣ 📂cat1.imageset
- ┃ ┃ ┣ 📜cat1.jpg
+ ┃ ┃ ┣ 📜cat1.png
  ┃ ┃ ┣ 📜cat1@2x.png
  ┃ ┃ ┣ 📜cat1@3x.png
  ┃ ┃ ┗ 📜Contents.json
  ┃ ┣ 📂cat2.imageset
- ┃ ┃ ┣ 📜cat2.jpg
+ ┃ ┃ ┣ 📜cat2.png
  ┃ ┃ ┣ 📜cat2@2x.png
  ┃ ┃ ┣ 📜cat2@3x.png
  ┃ ┃ ┗ 📜Contents.json
  ┃ ┗ 📂cat3.imageset
- ┃ ┃ ┣ 📜cat3.jpg
+ ┃ ┃ ┣ 📜cat3.png
  ┃ ┃ ┣ 📜cat3@2x.png
  ┃ ┃ ┣ 📜cat3@3x.png
  ┃ ┃ ┗ 📜Contents.json
