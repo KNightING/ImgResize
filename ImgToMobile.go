@@ -14,6 +14,8 @@ import (
 	"runtime"
 	"strings"
 
+	"github.com/peterhellberg/lossypng"
+
 	"github.com/nfnt/resize"
 )
 
@@ -124,6 +126,8 @@ func main() {
 				fmt.Println("Find target, name:" + f.Name())
 
 				getFilenameWithoutExt := getFilenameWithoutExt(f.Name())
+				pngName := getFilenameWithoutExt + ".png"
+
 				iOSInfo := IosInfo{
 					Version: 1,
 					Author:  "KNightING",
@@ -134,11 +138,20 @@ func main() {
 				iOSImgGroup := iosRoot + getFilenameWithoutExt + ".imageset/"
 				mkDir(iOSImgGroup)
 
+				//@4x,drawable-xxxhdpi
+				targetPath := flutter4_0Path + pngName
+				androidPath := xxxhdpiPath + pngName
+				if imgResize(t, filePath, 1.0, targetPath) {
+					copyFile(targetPath, androidPath)
+				} else {
+					fmt.Println("Mission fail at 4x")
+				}
+
 				//@3x,drawable-xxhdpi
-				targetPath := flutter3_0Path + f.Name()
+				targetPath = flutter3_0Path + pngName
 				iOSFileName := getFilenameWithoutExt + "@3x.png"
 				iOSPath := iOSImgGroup + iOSFileName
-				androidPath := xxhdpiPath + f.Name()
+				androidPath = xxhdpiPath + pngName
 				if imgResize(t, filePath, 3.0/4, targetPath) {
 
 					iosContents.Images = append(iosContents.Images, IosImages{
@@ -154,10 +167,10 @@ func main() {
 				}
 
 				//@2x,drawable-xhdpi
-				targetPath = flutter2_0Path + f.Name()
+				targetPath = flutter2_0Path + pngName
 				iOSFileName = getFilenameWithoutExt + "@2x.png"
 				iOSPath = iOSImgGroup + iOSFileName
-				androidPath = xhdpiPath + f.Name()
+				androidPath = xhdpiPath + pngName
 				if imgResize(t, filePath, 2.0/4, targetPath) {
 
 					iosContents.Images = append(iosContents.Images, IosImages{
@@ -173,8 +186,8 @@ func main() {
 				}
 
 				//@1.5x,drawable-hdpi
-				targetPath = flutter1_5Path + f.Name()
-				androidPath = hdpiPath + f.Name()
+				targetPath = flutter1_5Path + pngName
+				androidPath = hdpiPath + pngName
 				if imgResize(t, filePath, 3.0/8, targetPath) {
 					copyFile(targetPath, androidPath)
 				} else {
@@ -182,14 +195,14 @@ func main() {
 				}
 
 				//@1x,drawable-mhdpi
-				targetPath = flutterRoot + f.Name()
-				iOSPath = iOSImgGroup + f.Name()
-				androidPath = mdpiPath + f.Name()
+				targetPath = flutterRoot + pngName
+				iOSPath = iOSImgGroup + pngName
+				androidPath = mdpiPath + pngName
 				if imgResize(t, filePath, 1.0/4, targetPath) {
 
 					iosContents.Images = append(iosContents.Images, IosImages{
 						Idiom:    "universal",
-						Filename: f.Name(),
+						Filename: pngName,
 						Scale:    "1x",
 					})
 
@@ -199,11 +212,11 @@ func main() {
 					fmt.Println("Mission fail at 1x")
 				}
 
-				//@4x,drawable-xxxhdpi
-				targetPath = flutter4_0Path + f.Name()
-				androidPath = xxxhdpiPath + f.Name()
-				copyFile(filePath, targetPath)
-				copyFile(filePath, androidPath)
+				// //@4x,drawable-xxxhdpi
+				// targetPath = flutter4_0Path + f.Name()
+				// androidPath = xxxhdpiPath + f.Name()
+				// copyFile(filePath, targetPath)
+				// copyFile(filePath, androidPath)
 
 				writeIosContent(iOSImgGroup, iosContents)
 
@@ -215,6 +228,7 @@ func main() {
 
 	fmt.Println("Mission Complete!!!")
 	fmt.Scanln()
+	os.Exit(0)
 }
 
 func mkDir(path string) error {
@@ -266,7 +280,7 @@ func imgResize(imgType ImageType, path string, ratio float32, targetPath string)
 	b := img.Bounds()
 	width := uint(float32(b.Max.X) * ratio)
 	height := uint(float32(b.Max.Y) * ratio)
-	m := resize.Resize(width, height, img, resize.Bilinear)
+	img = resize.Resize(width, height, img, resize.Bilinear)
 
 	// out, err := os.Create(fmt.Sprintf("test_resized_%f.png", ratio))
 	// if err != nil {
@@ -277,8 +291,16 @@ func imgResize(imgType ImageType, path string, ratio float32, targetPath string)
 	// jpeg.Encode(out, m, nil)
 
 	// write new image to file
+	img = lossypng.Optimize(img, lossypng.RGBAConversion, 10)
+
 	buf := new(bytes.Buffer)
-	png.Encode(buf, m)
+	// png.Encode(buf, img)
+
+	pngEncoder := png.Encoder{
+		CompressionLevel: png.BestCompression,
+	}
+
+	pngEncoder.Encode(buf, img)
 
 	// fileName := fmt.Sprintf("%s_%d.png", getFilenameWithoutExt(file.Name()), width)
 	err = ioutil.WriteFile(targetPath, buf.Bytes(), 0644)
