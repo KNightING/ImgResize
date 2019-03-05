@@ -141,10 +141,16 @@ func main() {
 				//@4x,drawable-xxxhdpi
 				targetPath := flutter4_0Path + pngName
 				androidPath := xxxhdpiPath + pngName
-				if imgResize(t, filePath, 1.0, targetPath) {
-					copyFile(targetPath, androidPath)
+
+				if t != Png {
+					if imgResize(t, filePath, 1.0, targetPath) {
+						copyFile(targetPath, androidPath)
+					} else {
+						fmt.Println("Mission fail at 4x")
+					}
 				} else {
-					fmt.Println("Mission fail at 4x")
+					copyFile(filePath, targetPath)
+					copyFile(filePath, androidPath)
 				}
 
 				//@3x,drawable-xxhdpi

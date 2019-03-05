@@ -1,4 +1,5 @@
 # ImgToMobile
+
 Resize 4x image(png/jpeg) for ios/android/flutter
 
 #### Move application (ImgToMobile.exe for windows, ImgToMobile_mac_os for mac os) to image folder and execute it.
@@ -85,3 +86,5 @@ become to
 </pre>
 
 ### Use this [resize package](https://github.com/nfnt/resize) to resize image.
+
+### Use [lossypng](https://github.com/peterhellberg/lossypng) to compression image.
