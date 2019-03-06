@@ -2,7 +2,7 @@
 
 Resize 4x image(png/jpeg) for ios/android/flutter
 
-#### Move application (ImgToMobile.exe for windows, ImgToMobile_mac_os for mac os) to image folder and execute it.
+#### Move application (ImgResize.exe for windows, ImgResize_mac_os for mac os) to image folder and execute it.
 
 #### Will resize image to 3x and 2x and 1.5x and 1x and generate png file to android/flutter/ios folder.
 
