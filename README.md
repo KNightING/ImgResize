@@ -1,4 +1,4 @@
-# ImgToMobile
+# ImgResize
 
 Resize 4x image(png/jpeg) for ios/android/flutter
 
